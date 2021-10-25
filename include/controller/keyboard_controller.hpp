@@ -80,7 +80,7 @@ namespace controller
             return 0;
         }
 
-        std::cout << "Could not open" << filename << '\n';
+        std::cerr << "Could not open" << filename << '\n';
         return 1;
     }
 }
