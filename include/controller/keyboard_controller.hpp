@@ -81,6 +81,7 @@ namespace controller
         }
 
         std::cerr << "Could not open" << filename << '\n';
+        std::cerr << "May required super user rights\n";
         return 1;
     }
 }
