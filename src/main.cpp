@@ -6,6 +6,11 @@
 
 #include "controller/keyboard_controller.hpp"
 
+#include "communication/communication.hpp"
+#include "core/core.hpp"
+#include "policy/policy.hpp"
+#include "recorder/recorder.hpp"
+
 
 int
 main(int argc, char *argv[])
