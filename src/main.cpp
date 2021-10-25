@@ -10,6 +10,7 @@
 #include "core/core.hpp"
 #include "policy/policy.hpp"
 #include "recorder/recorder.hpp"
+#include "robocar/robocar.hpp"
 
 
 int
@@ -23,7 +24,12 @@ main(int argc, char *argv[])
     auto cont = controller::DirectionController();
 
     // Start getting controller inputs
-    auto res = std::async(std::launch::async, [&cont]{ controller::updateKeyboard(cont); });
+    auto async = std::async(std::launch::async, [&cont]{ controller::updateKeyboard(cont); });
+
+    // Check if controller could be setup
+    auto status = async.wait_for(std::chrono::seconds(1));
+    if (status == std::future_status::ready)
+        return 1;
 
     while (!cont.getStop())
     {
