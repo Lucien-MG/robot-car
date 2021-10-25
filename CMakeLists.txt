@@ -10,10 +10,15 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 find_package(Boost 1.76 REQUIRED COMPONENTS json program_options)
 
+
 add_executable(drive
     src/keyboard_controller.cpp
     src/main.cpp
     )
+
+# Define C++17 standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Link with -lpthread
 target_link_libraries(drive PRIVATE Threads::Threads)
